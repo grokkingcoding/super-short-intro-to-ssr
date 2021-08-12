@@ -53,6 +53,8 @@ export async function getServerSideProps(context) {
 
     const searchTerm = context.query.userName
 
+...
+
 ```
 
 - Here you pass the userName variable into your api url.
