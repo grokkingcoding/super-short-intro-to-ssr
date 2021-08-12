@@ -31,19 +31,27 @@ The github link is as follows:
 
 4. To do SSR with api data from another server, you can do something like this:
 
+```
+
 export async function getServerSideProps() {
 let apiData = await fetch('https://mydomain/my-awesome-api')
 apiData = await apiData.json()
-return {props: {apiData: apiData}}  
+return {props: {apiData: apiData}}
 }
+
+```
 
 5. Below is a short code snippet of how you might use server side rendering to get data based on different route paths on your website.
 
 - Here you see we used "context" to get the data from our route path. So the value "context.query.searchTerm" gets the variable in your route that you have specidified in your pages section.
 
+```
+
 export async function getServerSideProps(context) {
 
     const searchTerm = context.query.userName
+
+```
 
 - Here you pass the userName variable into your api url.
 
@@ -54,7 +62,7 @@ export async function getServerSideProps(context) {
       userData = await userData.json()
 
       return {
-          props: {giphys: giphys}
+          props: {profile: userData.data}
           }
         }
 ```
