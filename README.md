@@ -34,9 +34,11 @@ The github link is as follows:
 ```
 
 export async function getServerSideProps() {
-let apiData = await fetch('https://mydomain/my-awesome-api')
-apiData = await apiData.json()
-return {props: {apiData: apiData}}
+    let apiData = await fetch('https://mydomain/my-awesome-api')
+
+    apiData = await apiData.json()
+
+    return {props: {apiData: apiData}}
 }
 
 ```
@@ -83,25 +85,24 @@ return(
 <>
 
 <Head>
-<title>Profile</title>
-<link rel="icon" href="/favicon.ico" />
-<link rel="stylesheet" href="/styles.css"/>
+    <title>Profile</title>
+    <link rel="icon" href="/favicon.ico" />
+    <link rel="stylesheet" href="/styles.css"/>
 </Head>
-    <h1>Welcome back: {router.query.userName}!</h1>
 
- <div className="giphy-search-results-grid">
+<h1>Welcome back: {router.query.userName}!</h1>
+
+ <div className="user-profile-grid">
         {
     initialData.profile.map((each, index) => {
         return(
-
-        <div key={index}>
-            <h3>{each.userName}</h3>
-            <img src={each.userImageUrl} alt={each.imgTitle}/>
-        </div>
-
-        )
+            <div key={index}>
+                <h3>{each.userName}</h3>
+                <img src={each.userImageUrl} alt={each.imgTitle}/>
+            </div>
+            )
         })}
-        </div>
+  </div>
 
 </>)
 }
@@ -111,11 +112,13 @@ return(
 
 ```
       return {
-          props: {profile: userData.data}
+          props: { profile: userData.data }
           }
         }
 ```
 
 - Put it simple, initialData = props (which contains the data object) so when we do initialData.profile.map we are actually doing this:
 
+```
 props.profile.userData.data.map
+```
