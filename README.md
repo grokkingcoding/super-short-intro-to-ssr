@@ -117,7 +117,7 @@ return(
         }
 ```
 
-- Put it simple, initialData = props (which contains the data object) so when we do initialData.profile.map we are actually doing this:
+- Put it simple, initialData = props (props contain the data object) so when we do initialData.profile.map we are actually doing this:
 
 ```
 props.profile.userData.data.map
