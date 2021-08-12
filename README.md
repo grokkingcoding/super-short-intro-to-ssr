@@ -47,6 +47,8 @@ export async function getServerSideProps(context) {
 
 - Here you pass the userName variable into your api url.
 
+```
+
       let userData = await fetch(`https://myapi/v1/search?q=${userName}`)
 
       userData = await userData.json()
@@ -54,12 +56,16 @@ export async function getServerSideProps(context) {
       return {
           props: {giphys: giphys}
           }
-
-  }
+        }
+```
 
 6. So what happens after the data is fetched?
 
 - To pass the data from getServerSideProps we pass initalData into our Profile component like this, you see right after the name of the component like this - export default function Profile (initalData).
+
+- Note: remember to pass in a key for a list of items you are rendering with the array.map function. It is a good idea to use the index of each item in the array as this is always unique.
+
+```
 
 export default function Profile (initalData){
 
@@ -77,10 +83,8 @@ return(
 
  <div className="giphy-search-results-grid">
         {
-            initialData.profile.map((each, index) => {
+    initialData.profile.map((each, index) => {
         return(
-            
-- Note: remember to pass in a key for a list of items you are rendering with the array.map function. It is a good idea to use the index of each item in the array as this is always unique.
 
         <div key={index}>
             <h3>{each.userName}</h3>
@@ -93,3 +97,4 @@ return(
 
 </>)
 }
+```
