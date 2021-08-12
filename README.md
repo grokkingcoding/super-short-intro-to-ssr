@@ -106,3 +106,16 @@ return(
 </>)
 }
 ```
+
+- Why do we use initialData.profile.map? It is because when we fetched data before using getServerSideProps we structured the initialData like this.
+
+```
+      return {
+          props: {profile: userData.data}
+          }
+        }
+```
+
+- Put it simple, initialData = props (which contains the data object) so when we do initialData.profile.map we are actually doing this:
+
+props.profile.userData.data.map
